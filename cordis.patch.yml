@@ -1,0 +1,12 @@
+# dsh-plugin-power-button — bundle layer.
+#
+# A bundle package ships this patch; DSH applies it as one profile layer and the
+# `insert` row mounts the host half (src/index.js). The browser half is picked up
+# separately through `dsh.client` in package.json, which makes
+# `dsh-client-modules` serve ./lib/client.js to every page.
+#
+# The row id is stable on purpose: profile patches and re-installs can target it
+# by id, and DSH keeps it in `dsh.profile.bundles` order across upgrades.
+- insert:
+    - id: dsh-plugin-power-button
+      name: dsh-plugin-power-button

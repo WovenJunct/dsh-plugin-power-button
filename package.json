@@ -1,0 +1,66 @@
+{
+  "name": "dsh-plugin-power-button",
+  "version": "0.1.1",
+  "description": "DeepSeek Harness (DSH) plugin: adds a power button beside the sidebar account button that shuts the DSH desktop app down completely (no tray) or restarts it. 在侧边栏用户按钮右侧加一个关机按钮：选择「关机」彻底退出 DSH 桌面端（不缩到托盘），或选择「重新启动」自动重启。",
+  "type": "module",
+  "license": "MIT",
+  "author": "WovenJunct",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/",
+    "lib/",
+    "verify/",
+    "docs/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WovenJunct/dsh-plugin-power-button.git"
+  },
+  "homepage": "https://github.com/WovenJunct/dsh-plugin-power-button#readme",
+  "bugs": {
+    "url": "https://github.com/WovenJunct/dsh-plugin-power-button/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "power",
+    "shutdown",
+    "restart",
+    "quit",
+    "sidebar"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    },
+    "engines": {
+      "dsh": ">=0.2.0-rc.1"
+    }
+  },
+  "scripts": {
+    "verify": "node verify/verify.mjs",
+    "check": "node --check src/index.js && node --check src/power.js && node --check src/helper.mjs && node --check lib/client.js"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*"
+  }
+}
